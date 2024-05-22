@@ -1,0 +1,63 @@
+/* styles/Button.module.css */
+
+.button3{
+  position: absolute;
+  top: 60%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  border: 2px solid white; /* Adicionando uma borda branca de 2 pixels */
+  border-radius: 10px; /* Arredondando as bordas */
+  padding: 10px 20px; /* Adicionando preenchimento interno */
+  background-color: transparent; /* Tornando o fundo transparente */
+  color: white; /* Definindo a cor do texto como branca */
+  font-size: 1.2em; /* Aumentando o tamanho da fonte */
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999; /* Garantindo que o botão esteja acima de outros elementos */
+}
+.button3:hover,
+.button3:focus {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.button2{
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  border: 2px solid white; /* Adicionando uma borda branca de 2 pixels */
+  border-radius: 10px; /* Arredondando as bordas */
+  padding: 10px 20px; /* Adicionando preenchimento interno */
+  background-color: transparent; /* Tornando o fundo transparente */
+  color: white; /* Definindo a cor do texto como branca */
+  font-size: 1.2em; /* Aumentando o tamanho da fonte */
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999; /* Garantindo que o botão esteja acima de outros elementos */
+}
+.button2:hover,
+.button2:focus {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.button {
+  position: fixed;
+  bottom: 80px; /* Altere para ajustar a posição vertical do botão */
+  right: 30px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s, transform 0.3s; /* Adicionado transform na transição */
+} 
+
+.button:hover,
+.button:focus {
+  opacity: 1;
+  transform: scale(1.1); /* Ajuste a escala conforme necessário */
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  /* Adicione outros estilos desejados para a imagem */
+}
