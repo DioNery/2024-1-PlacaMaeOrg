@@ -5,10 +5,13 @@ FROM node:18.16.0-alpine
 WORKDIR /app
 
 # Copia os arquivos do projeto para o diretório de trabalho no contêiner
-COPY . .
+COPY package*.json ./
 
-# Instala as dependências do projeto
-RUN npm install --production
+# Instala todas as dependências do projeto
+RUN npm install
+
+# Copia o restante dos arquivos do projeto
+COPY . .
 
 # Constrói a aplicação Next.js
 RUN npm run build
@@ -17,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Comando para iniciar a aplicação quando o contêiner for iniciado
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
