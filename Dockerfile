@@ -2,7 +2,7 @@
 FROM node:18.16.0-alpine
 
 # Define o diretório de trabalho dentro do contêiner
-WORKDIR /app
+WORKDIR /pages
 
 # Copia os arquivos do projeto para o diretório de trabalho no contêiner
 COPY package*.json ./
