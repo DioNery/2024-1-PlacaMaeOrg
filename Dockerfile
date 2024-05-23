@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Constrói a aplicação Next.js
-RUN npm run build
+RUN npm run dev
 
 # Exponha a porta 3000 que o Next.js usa por padrão
 EXPOSE 3000
