@@ -1,10 +1,13 @@
 # Use a imagem oficial do Node.js na versão 18.16.0 como base
 FROM node:18.16.0-alpine
 
-# Define o diretório de trabalho dentro do contêiner
-WORKDIR /pages
+# Instala dependências nativas necessárias
+RUN apk add --no-cache python3 make g++
 
-# Copia os arquivos do projeto para o diretório de trabalho no contêiner
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia os arquivos package.json e package-lock.json para o diretório de trabalho
 COPY package*.json ./
 
 # Instala todas as dependências do projeto
@@ -12,9 +15,6 @@ RUN npm install
 
 # Copia o restante dos arquivos do projeto
 COPY . .
-
-# Constrói a aplicação Next.js
-RUN npm run dev
 
 # Exponha a porta 3000 que o Next.js usa por padrão
 EXPOSE 3000
