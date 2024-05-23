@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Comando para iniciar a aplicação quando o contêiner for iniciado
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]
