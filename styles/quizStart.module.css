@@ -1,80 +1,41 @@
-.quizStartText {
-  max-width: 600px;
-  animation: fadeInUp 0.8s ease-out; /* Adiciona a animação fadeInUp com duração de 0.8s */
+.imagem{
+  display: grid;
+  position: relative;
+  right: -600px;
+  top: 	-240px;
 }
 
-.quizStartText h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.quizStartText p {
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
-.quizStartText button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.quizStartText button:hover {
-  background-color: #45a049;
-}
-
-.texto {
+.titulo{
   color: white;
-  font-size: large;
+  font-size: 50px;
+  width: 380px;
+  font-weight: 600;
+  bottom: -80px;
+  right: -35px;
+  position: relative;
+}
+
+.paragrafo{
+  color: white;
+  width: 500px;
+  font-size: 20px;
   text-align: justify;
-  animation: fadeInUp 0.8s ease-out
+  position: relative;
+  bottom: -80px;
+  right: -40px;
 }
 
-.voltarButton {
-  margin-top: 8px;
-  padding: 10px 20px;
-  background-color: rgba(251, 108, 27, 1);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  animation: fadeInUp 0.8s ease-out
+.start{
+  display: grid;
+  position: relative;
+  width: 130px;
+  right: -730px;
+  top:-5px;
+  z-index: 2;
+  transition: transform 0.3s ease;
 }
 
-.voltarButton:hover {
-  background-color: rgb(164, 69, 14);
-  opacity: 0.8;
+.start:hover{
   transform: scale(1.1);
 }
 
-.titulo {
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  animation: fadeInUp 0.8s ease-out
-}
-
-.image {
-  width: 60vh;
-  height: auto;
-  display: block;
-  margin: auto;
-  animation: fadeInUp 0.8s ease-out; /* Adiciona a animação fadeInUp com duração de 0.8s */
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}

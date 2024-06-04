@@ -14,7 +14,7 @@
   border-radius: 10px;
   margin-left: 350px;
   margin-right: 350px;
-
+  color: #fff;
 }
 
 .option {
@@ -63,4 +63,13 @@
   color: white;
   font-size: larger;
   font-weight: bold;
+}
+
+.explanation{
+  padding-top: 60px;
+  color: white;
+}
+
+.questionCounter{
+  color: rgb(255, 255, 255);
 }
