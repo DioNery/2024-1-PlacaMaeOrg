@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/quiz.module.css';
-import questoesF from '../const/questoesFaceis';
-import questoesM from '../const/questoesMedias';
-import questoesD from '../const/questoesDificeis';
+import questoesF from '../pages/questoesFaceis';
+import questoesM from '../pages/questoesMedias';
+import questoesD from '../pages/questoesDificeis';
 
 const Quiz = () => {
   const router = useRouter();
