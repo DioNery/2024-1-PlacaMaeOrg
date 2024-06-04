@@ -51,22 +51,6 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
           </div>
         </Link>
-        <Link href="/bully">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/bully"
-                ? "bg-orange-100 text-orange-500"
-                : "text-white hover:bg-orange-100 hover:text-orange-500"
-            }`}
-          >
-            <div className="mr-2">
-              <BookOpenIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Material Interativo</p>
-            </div>
-          </div>
-        </Link>
         <Link href="/indicacoes">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
