@@ -5,34 +5,21 @@ import styles from '../styles/quizStart.module.css';
 const QuizStart = () => {
 
   const router = useRouter();
-
-  const handleVoltarClick = () => {
-    router.push('/quiz');
+  const handleSelecionarClick = () => {
+    router.push('/selecionar');
   };
 
-  return (
-    <div className={styles.seuContainer}>
+  
 
-    <h1 className={styles.titulo}>
-    Bem-vindo ao Teste Lógico de Cyberbullying!
-    </h1>
-    <div className={styles.texto}>
-    <p>
-          Antes de começarmos, vamos explorar seus conhecimentos sobre cyberbullying.
-          Este teste destina-se a avaliar sua compreensão sobre práticas online seguras
-          e como lidar com situações de cyberbullying. Responda com honestidade e reflexão.
-    </p>
-    <p>
-          Lembre-se, o objetivo é promover a conscientização e a prevenção do cyberbullying,
-          criando um ambiente online mais seguro para todos.
-    </p>
-    </div>
-      <button className={styles.voltarButton} onClick={handleVoltarClick}>
-        Iniciar teste
+  return (
+    <div>
+      <h1 className={styles.titulo}>Bem-vindo ao Teste Lógico de Cyberbullying!</h1>
+      <div className={styles.paragrafo}>
+        <p>Simbora pro Quiz!</p>
+      </div>  
+      <button onClick={handleSelecionarClick}>
+        <img src='/start.png' className={styles.start} ></img>
       </button>
-      <div className={styles.image}>
-          <img src='/question.png' alt="Avatar flutuante lendo um livro" />
-        </div>
     </div>
   );
 };

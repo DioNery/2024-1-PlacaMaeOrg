@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router'; // Importa o useRouter do Next.js
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styles from '../styles/quiz.module.css';
-import questions from './questions';
+import questoesF from '../const/questoesFaceis';
+import questoesM from '../const/questoesMedias';
+import questoesD from '../const/questoesDificeis';
 
 const Quiz = () => {
-  const router = useRouter(); // Obtém o objeto de roteamento do Next.js
-
+  const router = useRouter();
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestions, setCurrentQuestions] = useState([]);
 
-  const currentQuestion = questions[currentQuestionIndex];
+  useEffect(() => {
+    const { dificuldade } = router.query;
+    if (dificuldade === 'medio') setCurrentQuestions(questoesM);
+    else if (dificuldade === 'dificil') setCurrentQuestions(questoesD);
+    else setCurrentQuestions(questoesF);
+    setCurrentQuestionIndex(0); // Resetar o índice da questão quando a dificuldade mudar
+  }, [router.query]);
+
+  const currentQuestion = currentQuestions[currentQuestionIndex];
 
   const handleOptionClick = (index) => {
-    if (!isConfirmed) {
-      setSelectedOption(index);
-    }
+    if (!isConfirmed) setSelectedOption(index);
   };
 
   const handleConfirm = () => {
@@ -35,17 +43,23 @@ const Quiz = () => {
     setSelectedOption(null);
     setIsCorrect(null);
     setIsConfirmed(false);
-
-    if (currentQuestionIndex === 12 && isCorrect) {
-      router.push('/tela-de-destino'); // Redireciona para a tela desejada ao acertar a questão 13
-    } else {
+    if (currentQuestionIndex < currentQuestions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    } else if (isCorrect) {
+      router.push('/tela-de-destino');
     }
   };
 
+  // Verificar se currentQuestion está definido antes de tentar acessar suas propriedades
+  if (!currentQuestion) {
+    return <div>Carregando...</div>;
+  }
+
   return (
     <div className={styles.quizContainer}>
-      <div className={styles.questionCounter}>Questão {currentQuestionIndex + 1} de {questions.length}</div>
+      <div style={{ color: 'white' }} className={styles.questionCounter}>
+        Questão {currentQuestionIndex + 1} de {currentQuestions.length}
+      </div>
       <h1 className={styles.pergunta}>{currentQuestion.question}</h1>
       <div className={styles.optionsContainer}>
         {currentQuestion.options.map((option, index) => (

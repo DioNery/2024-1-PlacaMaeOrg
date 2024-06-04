@@ -1,67 +1,54 @@
 import styles from '../styles/Button.module.css';
-import styleText from '../styles/saibamais.module.css'
+import Link from "next/link";
 
-//Diego was here
 export default function Home() {
   return (
     <>
-
-  
-      <div className="image-container">
-        <div className="logo-container">
-          <img
-            className="logo"
-            src="/logo_home.png"
-            alt="logo X"
-          />
+      <div className="main-container">
+        <div className="image-container">
+          <div className="image-wrapper">
+            <p style={{color:'white',fontSize:'30px',right:'-550px', position:'relative',fontWeight:'900',  fontStyle: 'italic', width:'550px'}}>A educação digital pode ser divertida e transformadora_</p>
+            <img className={styles.principal} src="/img. principal.png" alt="logo placa mae" />
+            <p style={{color:'white',position:'relative',display:'grid', top:'-110px',left:'40px',fontSize:'25px',fontWeight:'600'}}>Nós vamos dominar o mundo!</p>  
+          </div>
         </div>
-        <div className="images-row">
-          <img
-            className="image"
-            src="/criancas.jpg"
-            alt="logo placa mae"
-          />
-
-        <div>
-        <button className={styles.button2}>Materiais de Estudo</button>
+        <div className={styles.buttons}>
+          <Link href="/indicacoes">
+            <p className={styles.button1}>Materiais de Estudo</p>
+          </Link>
+          <Link href="/quizStart">
+            <p className={styles.button2}>Quiz</p>
+          </Link>
         </div>
-          
-        </div>
-
-        <div>
-        <button className={styles.button3}>Quero ir para o quiz</button>
-        </div>
-
-    
-        
       </div>
-      
+
       <style jsx>{`
-      
+        .main-container {
+          display: flex;
+          height: 100vh;
+          align-items: center;
+          justify-content: center;
+        }
 
         .image-container {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start; /* Ajuste para alinhar no topo */
-          height: 100vh; /* Mantive a altura como 100% da tela */
+          justify-content: flex-start;
         }
 
         .logo {
-          width: 20vw; /* Ajuste o tamanho da logo conforme necessário */
-          animation: slideUp 0.5s ease-in-out; /* Adicionada animação de slideUp ao logo_home */
+          width: 20vw;
+          animation: slideUp 0.5s ease-in-out;
         }
 
-        .images-row {
-          width: 50%; /* Reduzindo o tamanho da imagem para 50% da largura da tela */
+        .image-wrapper {
+          width: 50%;
           max-height: 80%;
           border-radius: 10px;
-          animation: slideUp 0.5s ease-in-out; 
-          display: block; /* Definindo como bloco para aplicar as margens automaticamente */
-          margin: 1vh auto 0 5%; /* Margem superior de 1vh, centralizado horizontalmente e sem margem inferior */
-          
-
-         
+          animation: slideUp 0.5s ease-in-out;
+          display: block;
+          margin: 1vh auto 0 5%;
         }
 
         .logo-container {
@@ -72,11 +59,19 @@ export default function Home() {
         }
 
         .image {
-          width: 60%; /* Ajuste a largura conforme necessário */
+          width: 60%;
           max-height: 100%;
           border-radius: 10px;
-          border: 5px solid #fff; /* Adicionado uma borda sólida branca de 5 pixels */
-          animation: slideUp 0.5s ease-in-out; 
+          border: 5px solid #fff;
+          animation: slideUp 0.5s ease-in-out;
+        }
+
+        .button-container {
+          display: flex;
+          flex-direction: column ;
+          align-items: center;
+          justify-content: space-around;
+          margin-left: 20px;
         }
 
         @keyframes slideUp {
@@ -87,6 +82,29 @@ export default function Home() {
           to {
             transform: translateY(0);
             opacity: 1;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .main-container {
+            flex-direction: column;
+          }
+
+          .button-container {
+            margin-left: 0;
+            margin-top: 20px;
+          }
+
+          .image-wrapper {
+            width: 80%;
+          }
+
+          .logo {
+            width: 40vw;
+          }
+
+          .image {
+            width: 80%;
           }
         }
       `}</style>
