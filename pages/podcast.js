@@ -19,13 +19,13 @@ export default function PodCast() {
   });
 
   const pods = [
-    { src: '/podcast1.png', className: styles.pod1, href: 'https://www.conviveremais.com.br/produto/podcast-teste/'},
-    { src: '/podcast2.png', className: styles.pod2, href: 'https://www.conviveremais.com.br/produto/o-podcast-6-meu-sobrinho-sofre-bullying/' },
-    { src: '/podcast3.png', className: styles.pod3, href: 'https://www.conviveremais.com.br/produto/o-podcast-11/' },
-    { src: '/podcast4.png', className: styles.pod4, href: 'https://www.conviveremais.com.br/produto/o-podcast-15-comunicacao-eficaz/' },
-    { src: '/podcast5.png', className: styles.pod5, href: 'https://www.dialogando.com.br/seguranca/ouca-o-podcast-o-combate-ao-cyberbullying/' },
-    { src: '/podcast6.png', className: styles.pod6, href: 'https://open.spotify.com/show/7JfXTaZU5gLslSkbOBbfgX'},
-    { src: '/podcast7.png', className: styles.pod7, href: 'https://pt.player.fm/series/2643503' },
+    { src: '/podcast1.png', href: 'https://www.conviveremais.com.br/produto/podcast-teste/'},
+    { src: '/podcast2.png', href: 'https://www.conviveremais.com.br/produto/o-podcast-6-meu-sobrinho-sofre-bullying/' },
+    { src: '/podcast3.png', href: 'https://www.conviveremais.com.br/produto/o-podcast-11/' },
+    { src: '/podcast4.png', href: 'https://www.conviveremais.com.br/produto/o-podcast-15-comunicacao-eficaz/' },
+    { src: '/podcast5.png', href: 'https://www.dialogando.com.br/seguranca/ouca-o-podcast-o-combate-ao-cyberbullying/' },
+    { src: '/podcast6.png', href: 'https://open.spotify.com/show/7JfXTaZU5gLslSkbOBbfgX'},
+    { src: '/podcast7.png', href: 'https://pt.player.fm/series/2643503' },
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function PodCast() {
             <button>
               <img
                 src={pod.src}
-                className={pod.className}
+                className={styles[`pod${index + 1}`]} // Usar a classe dinâmica
                 style={getPodStyle(index)}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}

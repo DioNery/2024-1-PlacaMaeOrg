@@ -142,3 +142,17 @@
     width: 150px; /* Ajuste o tamanho conforme necessário para dispositivos móveis */
   }
 }
+/* Adiciona a transição para a escala (scale) quando o botão é hoverado */
+.buttonContainer {
+  transition: transform 0.2s ease;
+}
+
+.image {
+  image-rendering: crisp-edges; /* Aplica nitidez */
+  transition: transform 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.image:hover,
+.image:focus {
+  transform: scale(1.1); /* Aumenta a escala em 10% */
+}
