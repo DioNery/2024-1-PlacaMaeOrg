@@ -1,7 +1,17 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = nextConfig
+module.exports = {
+  webpack: (config) => {
+    config.optimization.minimizer = [
+      new UglifyJsPlugin({
+        sourceMap: true,
+        uglifyOptions: {
+          compress: {
+            drop_console: true,
+          },
+        },
+      }),
+    ];
+    return config;
+  },
+};

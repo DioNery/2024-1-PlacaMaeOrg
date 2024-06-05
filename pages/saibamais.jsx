@@ -9,7 +9,7 @@ export default function Saibamais() {
   return (
     <>
       <div className={styles.texto}>
-        <p style={{ fontSize: '20px', fontWeight: '600', fontStyle: 'italic', textDecoration: 'underline' }}>
+        <p style={{ fontSize: '20px', fontWeight: '600' }}>
           Nosso propósito
         </p>
         <p>

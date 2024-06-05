@@ -1,19 +1,16 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useRouter } from 'next/router';
-
-// Importe o CSS corretamente
+import Image from 'next/image';
 import styles from '../styles/quiz.module.css';
 
-// Carrega o componente de forma dinâmica
-const Quiz = lazy(() => import('./quiz'));
-
-const QuizPage = () => {
+const Quiz = () => {
   const router = useRouter();
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestions, setCurrentQuestions] = useState([]);
+  const [step, setStep] = useState('start'); // 'start', 'select', 'quiz'
 
   useEffect(() => {
     const { dificuldade } = router.query;
@@ -21,17 +18,20 @@ const QuizPage = () => {
     const loadQuestions = async () => {
       let questionsModule;
       if (dificuldade === 'medio') {
-        questionsModule = await import('./questoesMedias');
+        questionsModule = await import('../pages/questoesMedias');
       } else if (dificuldade === 'dificil') {
-        questionsModule = await import('./questoesDificeis');
+        questionsModule = await import('../pages/questoesDificeis');
       } else {
-        questionsModule = await import('./questoesFaceis');
+        questionsModule = await import('../pages/questoesFaceis');
       }
       setCurrentQuestions(questionsModule.default || []);
       setCurrentQuestionIndex(0); // Resetar o índice da questão quando a dificuldade mudar
     };
 
-    loadQuestions();
+    if (router.query.dificuldade) {
+      loadQuestions();
+      setStep('quiz');
+    }
   }, [router.query]);
 
   const currentQuestion = currentQuestions[currentQuestionIndex];
@@ -63,7 +63,46 @@ const QuizPage = () => {
     }
   };
 
-  // Verificar se currentQuestion está definido antes de tentar acessar suas propriedades
+  const handleQuizStart = (dificuldade) => {
+    router.push(`/quiz?dificuldade=${dificuldade}`);
+  };
+
+  if (step === 'start') {
+    return (
+      <div>
+        <h1 className={styles.titulo}>Bem-vindo ao Teste Lógico de Cyberbullying!</h1>
+        <div className={styles.paragrafo}>
+          <p className='containerBora'>Simbora pro Quiz !</p>
+        </div>  
+        <button onClick={() => setStep('select')}>
+          <Image src='/start.png' alt="Start" width={100} height={100} className={styles.start} loading="lazy" />
+        </button>
+      </div>
+    );
+  }
+
+  if (step === 'select') {
+    return (
+      <div className='Estante'>
+      <div>
+          <h1 className={styles.titulo}>Selecione a dificuldade</h1>
+      </div>
+      <div>
+      <img src='/block.png' className={styles.imagem} width="170px"></img>
+        <button className={styles.dificil} onClick={() => handleQuizStart('dificil')}>
+          <img src='/dificil.png'></img>
+        </button>
+        <button className={styles.medio} onClick={() => handleQuizStart('medio')}>
+          <img src='/medio.png'></img>
+        </button>
+        <button className={styles.facil} onClick={() => handleQuizStart('facil')}>
+          <img src='/facil.png'></img>
+        </button>
+      </div>
+      </div>
+    );
+  }
+
   if (!currentQuestion) {
     return <div>Carregando...</div>;
   }
@@ -106,11 +145,4 @@ const QuizPage = () => {
   );
 };
 
-// Carregue o componente de forma assíncrona usando Suspense
-const QuizPageWithSuspense = () => (
-  <Suspense fallback={<div>Carregando...</div>}>
-    <QuizPage />
-  </Suspense>
-);
-
-export default QuizPageWithSuspense;
+export default Quiz;

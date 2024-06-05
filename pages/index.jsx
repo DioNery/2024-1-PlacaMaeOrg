@@ -1,6 +1,6 @@
-import styles from '../styles/Button.module.css';
+import styles from "../styles/Button.module.css";
 import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -8,16 +8,45 @@ export default function Home() {
       <div className="main-container">
         <div className="image-container">
           <div className="image-wrapper">
-            <p style={{color:'white',fontSize:'30px',right:'-550px', position:'relative',fontWeight:'900',  fontStyle: 'italic', width:'550px'}}>A educação digital pode ser divertida e transformadora_</p>
-            <Image className={styles.principal} src="/img. principal.png" alt="logo placa mae" width={500} height={350} />
-            <p style={{color:'white',position:'relative',display:'grid', top:'-110px',left:'40px',fontSize:'25px',fontWeight:'600'}}>Nós vamos dominar o mundo!</p>  
+            <p
+              style={{
+                color: "white",
+                fontSize: "30px",
+                left: "120%",
+                position: "relative",
+                fontWeight: "900",
+                fontStyle: "italic",
+                width: "550px",
+              }}
+            >
+              A educação digital pode ser divertida e transformadora_
+            </p>
+            <Image
+              className={styles.principal}
+              src="/img. principal.png"
+              alt="logo placa mae"
+              width={500}
+              height={350}
+            />
+            <p
+              style={{
+                color: "white",
+                position: "relative",
+                top: "-110px",
+                fontSize: "20px",
+                textAlign: "center",
+                fontWeight: "600",
+              }}
+            >
+              Nós vamos dominar o mundo!
+            </p>
           </div>
         </div>
         <div className={styles.buttons}>
           <Link href="/indicacoes">
             <p className={styles.button1}>Materiais de Estudo</p>
           </Link>
-          <Link href="/quizStart">
+          <Link href="/quiz">
             <p className={styles.button2}>Quiz</p>
           </Link>
         </div>
@@ -26,17 +55,14 @@ export default function Home() {
       <style jsx>{`
         .main-container {
           display: flex;
-          height: 100vh;
+          margin-top:2rem;
           align-items: center;
           justify-content: center;
         }
+        .main-container > .principal{
 
-        .image-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
         }
+        
 
         .logo {
           width: 20vw;
@@ -69,7 +95,7 @@ export default function Home() {
 
         .button-container {
           display: flex;
-          flex-direction: column ;
+          flex-direction: column;
           align-items: center;
           justify-content: space-around;
           margin-left: 20px;
