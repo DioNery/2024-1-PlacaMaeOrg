@@ -2,7 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '../styles/quiz.module.css';
-
+import getQuestoes from '../pages/questoes';
 const Quiz = () => {
   const router = useRouter();
   const [selectedOption, setSelectedOption] = useState(null);
@@ -15,17 +15,15 @@ const Quiz = () => {
   useEffect(() => {
     const { dificuldade } = router.query;
     
-    const loadQuestions = async () => {
-      let questionsModule;
-      if (dificuldade === 'medio') {
-        questionsModule = await import('../pages/questoesMedias');
-      } else if (dificuldade === 'dificil') {
-        questionsModule = await import('../pages/questoesDificeis');
-      } else {
-        questionsModule = await import('../pages/questoesFaceis');
+    const loadQuestions = () => {
+      try {
+        const questions = getQuestoes(dificuldade);
+        setCurrentQuestions(questions || []);
+        setCurrentQuestionIndex(0); // Resetar o índice da questão quando a dificuldade mudar
+      } catch (error) {
+        console.error("Erro ao carregar as questões:", error);
+        setCurrentQuestions([]);
       }
-      setCurrentQuestions(questionsModule.default || []);
-      setCurrentQuestionIndex(0); // Resetar o índice da questão quando a dificuldade mudar
     };
 
     if (router.query.dificuldade) {
@@ -72,7 +70,7 @@ const Quiz = () => {
       <div>
         <h1 className={styles.titulo}>Bem-vindo ao Teste Lógico de Cyberbullying!</h1>
         <div className={styles.paragrafo}>
-          <p className='containerBora'>Simbora pro Quiz !</p>
+          <p className='containerBora'>Simbora pro Quiz?</p>
         </div>  
         <button onClick={() => setStep('select')}>
           <Image src='/start.png' alt="Start" width={100} height={100} className={styles.start} loading="lazy" />

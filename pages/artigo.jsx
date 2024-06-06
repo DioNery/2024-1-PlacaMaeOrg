@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from '../styles/artigo.module.css';
+import styles from '../styles/pagSecundarias.module.css';
 
 export const artigo = () => {
   return (

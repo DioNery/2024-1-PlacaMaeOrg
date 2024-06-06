@@ -55,11 +55,11 @@
 }
 
 .start {
-  display: grid;
+  display: flex;
   position: relative;
   width: 130px;
-  right: -610px;
-  top: -1.5rem;
+  left: 700px;
+  top: -10px;
   z-index: 2;
   transition: transform 0.3s ease;
 }

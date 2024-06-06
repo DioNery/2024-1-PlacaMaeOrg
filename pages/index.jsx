@@ -44,10 +44,10 @@ export default function Home() {
         </div>
         <div className={styles.buttons}>
           <Link href="/indicacoes">
-            <p className={styles.button1}>Materiais de Estudo</p>
+            <p className={styles.botao}>Materiais de Estudo</p>
           </Link>
           <Link href="/quiz">
-            <p className={styles.button2}>Quiz</p>
+            <p className={styles.botao}>Quiz</p>
           </Link>
         </div>
       </div>

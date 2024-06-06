@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/livro.module.css';
+import styles from '../styles/pagSecundarias.module.css';
 
 export default function PodCast() {
   const livros = [

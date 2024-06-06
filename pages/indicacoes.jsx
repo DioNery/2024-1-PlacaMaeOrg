@@ -19,7 +19,7 @@ export default function Indicacoes() {
 
   return (
     <div>
-      <p className={styles.recomend}>Indicações</p>
+      <p className={styles.recomend}>Indicações: </p>
 
       <div className={styles.additionalButtons}>
         <div className={styles.buttonContainer}>

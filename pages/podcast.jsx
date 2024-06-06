@@ -1,7 +1,7 @@
 // PodCast.jsx
 import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
-import styles from '../styles/podcast.module.css';
+import styles from '../styles/pagSecundarias.module.css';
 import { pods } from '../pages/podcastData';
 
 export default function PodCast() {
@@ -22,8 +22,10 @@ export default function PodCast() {
   }), [hoveredIndex]);
 
   return (
-    <div>
-      <p className={styles.texto}>Recomendações de podcast</p>
+    <div className={styles.recomend}>
+      <div className={styles.texto}>
+        <p style={{ fontSize: '20px', fontWeight: '600' }}>Recomendações de podcast</p>
+        </div>
       <img src='/Component 12.png' className={styles.linha} />
       <div className={styles.divLivro}>
         {pods.map((pod, index) => (

@@ -10,13 +10,8 @@
   text-align: center;
 }
 
-.button1:hover,
-.button1:focus {
-  opacity: 1;
-  transform: scale(1.1);
-}
 
-.button1,.button2{
+.botao {
   color: white;
   width: 250px;
   background-color: rgba(217, 217, 217, 0.2);
@@ -25,8 +20,8 @@
 }
 
 
-.button2:hover,
-.button2:focus {
+.botao:hover,
+.botao:focus {
   opacity: 1;
   transform: scale(1.1);
 }
@@ -39,11 +34,6 @@
   transition: opacity 0.3s, transform 0.3s; 
 } 
 
-.button:hover,
-.button:focus {
-  opacity: 1;
-  transform: scale(1.1); 
-}
 
 .image {
   width: 100px;

@@ -1,0 +1,162 @@
+.texto{
+  color: white;
+  width: 600px;
+  font-size: 15px;
+  text-align: justify;
+  gap: 15px;
+  display: grid;
+}
+.estante1,.estante2{
+  display: flex;
+  position: relative;
+  top:-300px;
+  right: -280px;
+  width: 900px;
+  row-gap: 20px;
+}
+
+
+.livros1{
+  display: grid;
+  position: relative;
+  align-items: center;
+  grid-template-columns: repeat(3, 20.33%);
+  grid-gap: 10px;
+  right: -300px;
+  bottom: 330px;    
+}
+
+.livros2{
+  display: grid;
+  position: relative;
+  align-items: center;
+  grid-template-columns: repeat(5,11%);
+  grid-gap: 20px;
+  bottom: 330px;
+  right: -300px;
+}
+
+.selecionar{
+  transition: transform 0.3s ease;
+}
+
+.selecionar:hover{
+  transform: scale(1.1);
+}
+
+.texto1,.texto2{
+  color: white;
+  font-size: large;
+  margin: 0;
+  display: grid;
+  width: 250px;
+  position: relative;
+}
+
+.texto2{
+  gap: 250px;
+  bottom:-150px;
+}
+
+.texto1{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.linha{
+  position: relative;
+  bottom:-50px;
+  display: grid;
+}
+
+.pod1,.pod2,.pod3,.pod4,.pod5,.pod6,.pod7{
+  position: relative;
+  display: flex;
+  width: 120px;
+  transition: transform 0.3s ease;
+}
+
+.pod1:hover,.pod2:hover,.pod3:hover,.pod4:hover,.pod5:hover,.pod6:hover,.pod7:hover{
+  transform: scale(1.1);
+}
+
+.pod1{
+  right: -15px;
+  bottom: -10px;
+}
+
+.pod2{
+ right: -55px;
+ top:-30px; 
+}
+
+.pod3{
+  right: -100px;
+  top:-70px;
+}
+
+.pod4{
+  right: -190px;
+  top:-45px;
+}
+
+.pod5{
+  right: -300px;
+  top:-px
+}
+
+.pod6{
+  right: -370px;
+  top:-px;
+}
+
+.pod7{
+  right: -400px;
+  top:-60px;
+}
+
+.selecionar{
+  transition: transform 0.3s ease;
+}
+
+.selecionar:hover{
+  transform: scale(1.1);
+}
+
+/* .texto{
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+  position: relative;
+  right: -70px;
+  bottom:-40px;
+} */
+
+.componente1{
+  transition: transform 0.3s ease;
+}
+
+.componente1:hover{
+  transform: scale(1.1);
+}
+
+.logo{
+  top:-35px;
+  width: 200px;
+  right: -130vh;
+  position: relative;
+  z-index: 0;
+}
+
+.link {
+color: #fff;
+text-decoration: none;
+}
+
+.paragrafo
+{
+    color: "white";
+    font-size: "30px";
+    position: "relative";
+    font-style: "italic";
+}
