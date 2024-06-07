@@ -23,7 +23,8 @@
 .botao:hover,
 .botao:focus {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
 }
 .button {
   position: fixed;
@@ -31,13 +32,17 @@
   right: 30px;
   cursor: pointer;
   opacity: 0.5;
-  transition: opacity 0.3s, transform 0.3s; 
+  transition: transform 0.5s ease-in-out; 
 } 
 
 
 .image {
   width: 100px;
   height: 100px;
+  transition: transform 0.3s ease;
+}
+.image:hover {
+  transform: scale(1.2);
 }
 
 .logo{
