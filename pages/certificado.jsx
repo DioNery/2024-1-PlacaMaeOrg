@@ -1,13 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import styles from '../styles/certificado.module.css';
+import styles from '../../styles/certificado.module.css';
 
 const Certificado = () => {
   const router = useRouter();
 
   const handleVoltarClick = () => {
-    router.push('/quizStart');
+    router.push('/quiz');
   };
 
   return (

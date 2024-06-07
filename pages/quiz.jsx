@@ -2,7 +2,10 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '../styles/quiz.module.css';
-import getQuestoes from '../pages/questoes';
+
+// Lazy load da função getQuestoes
+const getQuestoes = import('../pages/questoes').then((module) => module.default);
+
 const Quiz = () => {
   const router = useRouter();
   const [selectedOption, setSelectedOption] = useState(null);
@@ -10,16 +13,17 @@ const Quiz = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestions, setCurrentQuestions] = useState([]);
-  const [step, setStep] = useState('start'); // 'start', 'select', 'quiz'
+  const [step, setStep] = useState('start');
 
   useEffect(() => {
     const { dificuldade } = router.query;
     
-    const loadQuestions = () => {
+    const loadQuestions = async () => {
       try {
-        const questions = getQuestoes(dificuldade);
+        const questionsModule = await getQuestoes;
+        const questions = questionsModule(dificuldade);
         setCurrentQuestions(questions || []);
-        setCurrentQuestionIndex(0); // Resetar o índice da questão quando a dificuldade mudar
+        setCurrentQuestionIndex(0);
       } catch (error) {
         console.error("Erro ao carregar as questões:", error);
         setCurrentQuestions([]);
