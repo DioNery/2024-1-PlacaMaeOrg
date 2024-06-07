@@ -13,7 +13,7 @@ export default function Button({ onClick }) {
       onClick={onClick}
     >
       <img
-        src="./denuncie.png"  
+      src="/denuncie1.png"
         alt="X"
         className={styles.image}
       />
