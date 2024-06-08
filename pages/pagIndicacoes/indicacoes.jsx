@@ -29,6 +29,28 @@ export default function Indicacoes() {
           </div>
         ))}
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .additionalButtons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .buttonContainer {
+            margin-bottom: 20px;
+          }
+
+          .buttonTitle {
+            font-size: 14px;
+          }
+
+          .recomend {
+            font-size: 18px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

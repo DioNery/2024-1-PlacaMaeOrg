@@ -1,15 +1,14 @@
-.buttons{
+.buttons {
   display: grid;
   grid-template-rows: auto; /* Cada item terá altura automática */
-  row-gap: 40px;
   position: relative;
-  left:-190px;
-  top:-15px;
+  left: -190px;
+  top: -15px;
   font-size: 20px;
-  font-weight:700;
+  font-weight: 700;
   text-align: center;
+  row-gap: 40px;
 }
-
 
 .botao {
   color: white;
@@ -19,44 +18,88 @@
   padding: 15px;
 }
 
-
 .botao:hover,
 .botao:focus {
   opacity: 1;
   transform: scale(1.2);
   transition: transform 0.3s ease;
+  background-color: #ff7f0e;
 }
-.button {
+
+.divBotaoDenuncia {
   position: fixed;
-  bottom: 80px; 
+  bottom: 80px;
   right: 30px;
   cursor: pointer;
   opacity: 0.5;
-  transition: transform 0.5s ease-in-out; 
-} 
+  transition: transform 0.5s ease-in-out;
+}
 
-
-.image {
-  width: 100px;
-  height: 100px;
+.botaoDenuncia {
+  width: 70px;
+  height: 70px;
   transition: transform 0.3s ease;
 }
-.image:hover {
+
+.botaoDenuncia:hover {
   transform: scale(1.2);
 }
 
-.logo{
+.logo {
   margin-top: -20px;
 }
 
-.principal{
+.principal {
   display: grid;
-  position: relative;
+  /* position: relative; */
   top: -120px;
   left: 2%;
   width: 900px;
 }
 
-.texto{
+.texto {
   color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: static;
+    left: 0;
+    top: 0;
+    margin-top: 20px; /* Adicione um espaçamento superior para separar os botões */
+    row-gap: 20px; /* Reduza o espaçamento entre os botões */
+  }
+
+  .botao {
+    width: 100%; /* Ajuste a largura para ocupar toda a largura do container pai */
+    border-radius: 15px; /* Reduza o raio da borda */
+  }
+
+  .botao:hover,
+  .botao:focus {
+  opacity: 1;
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  background-color: #ff7f0e;
+  }
+
+  .principal {
+    width: 80%; /* Reduza o tamanho da imagem */
+    margin: auto; /* Centralize a imagem horizontalmente */
+    margin-top: 20px; /* Adicione uma margem superior para separá-la da frase */
+  }
+  .botaoDenuncia {
+    display: flex;
+    position: static;
+  }
+.botaoDenuncia:hover {
+  transform: scale(1.2);
+  
+}
+  .podcastContainer img {
+      max-width: 80%;
+  }
 }

@@ -21,16 +21,23 @@
   border-radius: 8px;
 }
 
+/* Adiciona regras de mídia para dispositivos móveis */
 @media (max-width: 768px) {
   .carousel {
-    width: 60%; /* Ajuste o tamanho conforme necessário */
+    width: 60%; /* Ajusta o tamanho conforme necessário para dispositivos móveis */
+    top: 0; /* Posiciona o carousel no topo */
+    right: auto; /* Remove a posição direita */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Move para o centro */
+  }
+
+  .carouselImage {
+    margin-top: 2rem; /* Reduz o espaçamento superior */
   }
 }
 
 @media (max-width: 1024px) {
   .carousel {
-    width: 70%; /* Ajuste o tamanho conforme necessário */
+    width: 70%; /* Ajusta o tamanho conforme necessário para dispositivos com telas maiores */
   }
 }
-
-

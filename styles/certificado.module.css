@@ -1,4 +1,3 @@
-/* certificado.module.css */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -11,49 +10,61 @@
 }
 
 .certificadoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
-  }
-  
-  .certificadoImage {
-    margin-top: 5px;
-    animation: fadeInUp 0.8s ease-out; 
-  }
-  
+.certificadoImage {
+  margin-top: 5px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.certificadoImage img {
+  width: 90%; /* Altera a largura para ocupar 90% do contêiner pai */
+  height: auto;
+  max-width: 105vh; /* Define a largura máxima em viewport units */
+  border-radius: 2vh;
+}
+
+.voltarButton {
+  margin-top: 8px;
+  padding: 10px 20px;
+  background-color: rgba(251, 108, 27, 1);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  animation: fadeInUp 0.8s ease-out; /* Adicionando transição para suavizar a mudança de cor */
+}
+
+.voltarButton:hover {
+  background-color: rgb(164, 69, 14);
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.conclusao {
+  margin-top: 0 auto;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Adiciona regras de mídia para dispositivos móveis */
+@media (max-width: 768px) {
   .certificadoImage img {
-    width: 105vh;
-    height: auto;
-    border-radius: 2vh;
+    width: 90%; /* Altera a largura para ocupar 90% do contêiner pai */
+    max-width: none; /* Remove a largura máxima */
   }
-  
+
   .voltarButton {
-    margin-top: 8px;
-    padding: 10px 20px;
-    background-color: rgba(251, 108, 27, 1);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease; 
-    animation: fadeInUp 0.8s ease-out; /* Adicionando transição para suavizar a mudança de cor */
+    font-size: 14px; /* Reduz o tamanho da fonte para dispositivos móveis */
+    padding: 8px 16px; /* Reduz o preenchimento */
   }
-  
-  .voltarButton:hover {
-    background-color: rgb(164, 69, 14);
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-    
-  .conclusao {
-    margin-top: 0 auto;
-    color: white;
-    font-size: larger;
-    font-weight: bolder;
-    animation: fadeInUp 0.8s ease-out; 
-  }
-  
+}

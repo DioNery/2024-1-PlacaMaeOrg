@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/pagSecundarias.module.css';
 
-export default function PodCast() {
+export default function Livros() {
   const livros = [
     { 
       src: '/livro1.png',
@@ -56,36 +56,27 @@ export default function PodCast() {
   return (
     <div>
       <p className={styles.texto1}>Dicas de leitura</p>
-
       <div className={styles.texto2}>
-        <p>Livros gratuitos e autorias do placamae</p>
-        <p>Recomendação de compras</p>
-      </div>
-    
-      <div className={styles.livros1}>
+        <p>Livros gratuitos e autorias do placamae:</p>
+        <div className={styles.horizontalAlign}>
         {livros.slice(0, 3).map((livro, index) => (
           <a key={index} href={livro.href} target="_blank" rel="noopener noreferrer">
-            <button>
-              <img src={livro.src} alt={livro.alt} className={livro.className} style={{position:'relative',bottom:"-20px"}} />
-            </button>
+            <img src={livro.src} alt={livro.alt} className={`${styles.componente1} ${livro.className}`} />
           </a>
         ))}
       </div>
-
-      <img src='estante.png' className={styles.estante1} alt="Estante 1" />
-
-      <div className={styles.livros2}>
+        <p>Recomendação de compras:</p>
+        <div className={styles.horizontalAlign}>
         {livros.slice(3).map((livro, index) => (
           <a key={index} href={livro.href} target="_blank" rel="noopener noreferrer">
-            <button>
-              <img src={livro.src} alt={livro.alt} className={livro.className} />
-            </button>
+            <img src={livro.src} alt={livro.alt} className={`${styles.componente1} ${livro.className}`} />
           </a>
         ))}
       </div>
-
-      <img src='estante.png' className={styles.estante2} alt="Estante 2" />     
-      <a href='/indicacoes' className={styles.link}>Voltar</a>
+      </div>
+     
+     
+      <a href='/pagIndicacoes/indicacoes' className={styles.link}>Voltar</a>
     </div>
   );
 }

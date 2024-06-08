@@ -2,14 +2,11 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '../../styles/certificado.module.css';
-
 const Certificado = () => {
   const router = useRouter();
-
   const handleVoltarClick = () => {
     router.push('/quiz');
   };
-
   return (
     <div className={styles.certificadoContainer}>
       <h1 className={styles.conclusao}>Parabéns! 🎉
@@ -35,5 +32,4 @@ Obrigado por fazer parte dessa jornada!</h1>
     </div>
   );
 };
-
 export default Certificado;

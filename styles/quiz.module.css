@@ -1,66 +1,56 @@
-/* styles/quiz.module.css */
+.container {
+  text-align: center;
+  padding: 20px;
+}
+.containerBora {
+  font-size: 18px;
+  margin-top: 1rem;
+  color: white;
+}
+.paragrafo {
+  color: white;
+  width: 80%;
+  text-align: justify;
+  margin: 0 auto 2rem auto; /* Centraliza o texto e adiciona espaçamento inferior */
+}
+
+.paragrafo > p {
+  font-size: 20px;
+  font-weight: 600;
+}
 .titulo {
   color: white;
   text-align: center;
   font-size: 40px;
   font-weight: 600;
-  position: relative;
   margin-bottom: 2rem;
 }
 
 .imagem {
   display: grid;
-  
-  position: relative;
-  right: -270px;
+  margin-bottom: 2rem;
 }
 
 .dificil, .medio, .facil {
-  position: relative;
-  display: grid;
+  /* position: relative; */
+  display: flex;
   transition: transform 0.3s ease;
+  margin-bottom: 2rem;
 }
 
-.dificil {
-  right: -480px;
-  top: -320px;
-}
-
-.medio {
-  right: -480px;
-  top: -260px;
-}
-
-.facil {
-  right: -480px;
-  top: -200px;
+.dificil, .medio, .facil {
+  right: 0;
+  top: 0;
 }
 
 .facil:hover, .medio:hover, .dificil:hover {
   transform: scale(1.1);
 } 
 
-.paragrafo {
-  color: white;
-  width: 500px;
-  text-align: justify;
-  position: relative;
-  bottom: -80px;
-  right: -8%;
-}
-.paragrafo > p{
-  font-size: 48px;
-  font-weight: 600;
-  margin-left: 4rem;
-}
-
 .start {
   display: flex;
-  position: relative;
   width: 130px;
-  left: 700px;
-  top: -10px;
-  z-index: 2;
+  margin: 0 auto;
   transition: transform 0.3s ease;
 }
 
@@ -75,20 +65,20 @@
 .optionsContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-left: 200px;
-  margin-right: 200px;
+  padding: 0.5px; /* Reduz ainda mais o padding */
+  border-radius: 0.5px; /* Reduz a borda */
+  gap: 0.5rem; /* Reduz o espaçamento entre as opções */
+  margin-top: 0.5rem; /* Reduz o espaçamento superior */
 }
 
+/* Estilos para as opções */
 .option {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 0.5px; /* Reduz ainda mais o padding das opções */
+  border: 0.5px solid #ccc;
+  border-radius: 5px; /* Reduz a borda */
   cursor: pointer;
+  font-size: 0.8rem; /* Reduz o tamanho da fonte */
   transition: background-color 0.3s ease;
 }
 
@@ -97,7 +87,7 @@
 }
 
 .selected {
-  background-color: #b3e0ff; /* Azul claro para opção selecionada */
+  background-color: #b3e0ff;
 }
 
 .correct {
@@ -105,13 +95,13 @@
 }
 
 .incorrect {
-  background-color: #ff7f7f; /* Vermelho para resposta incorreta */
+  background-color: #ff7f7f;
 }
 
 .confirmButton {
   margin-top: 20px;
   padding: 10px;
-  background-color: rgba(251, 108, 27, 1); /* Verde para botão de confirmação */
+  background-color: rgba(251, 108, 27, 1);
   color: #fff;
   cursor: pointer;
   border: none;
@@ -123,12 +113,88 @@
 .confirmButton:hover {
   background-color: rgb(164, 69, 14);
   opacity: 0.8;
-  transform: scale(1.1); /* Move o botão ligeiramente para cima e para a esquerda para compensar o aumento de tamanho */
+  transform: scale(1.1);
 }
 
 .pergunta {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
   color: white;
   font-size: larger;
   font-weight: bold;
 }
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+}
 
+.buttonsWrapper {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto; /* Adiciona rolagem horizontal se os botões ultrapassarem a largura da tela */
+}
+
+.buttonsWrapper > button {
+  max-width: 100px; /* Define uma largura máxima para os botões */
+}
+
+.imagem {
+  max-width: 170px; /* Define uma largura máxima para a imagem */
+}
+.Estante {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Estante img {
+  width: 100%; /* Define a largura da imagem para ocupar toda a largura do contêiner pai */
+  max-width: 500px; /* Define uma largura máxima para a imagem */
+  height: auto; /* Permite que a altura seja ajustada automaticamente para manter a proporção */
+}
+/* Media query para dispositivos móveis */
+@media only screen and (max-width: 768px) {
+  .titulo {
+    font-size: 30px;
+  }
+
+  .paragrafo {
+    width: 90%;
+  }
+  .buttonsWrapper {
+    flex-wrap: wrap; /* Permite que os botões sejam empilhados verticalmente em telas menores */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+  }
+
+  .buttonsWrapper > button {
+    flex: 0 0 auto; /* Impede que os botões se estiquem para ocupar todo o espaço disponível */
+  }
+
+  .imagem {
+    max-width: 100%; /* A imagem ocupará toda a largura do contêiner pai */
+    margin-bottom: 10px; /* Adiciona espaço entre a imagem e os botões */
+  }
+   /* Estilos para o contador de questões em dispositivos móveis */
+   .questionCounter {
+    font-size: 1rem;
+  }
+
+  /* Estilos para as perguntas em dispositivos móveis */
+  .pergunta {
+    font-size: 1.2rem; /* Reduz o tamanho da fonte das perguntas em dispositivos móveis */
+    margin-bottom: 1rem; /* Reduz o espaço entre as perguntas */
+  }
+
+  /* Estilos para as opções em dispositivos móveis */
+  .option {
+    padding: 0.8rem;
+  }
+
+  /* Estilos para o botão de confirmação em dispositivos móveis */
+  .confirmButton {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}

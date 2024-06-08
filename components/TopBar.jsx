@@ -51,6 +51,10 @@ export default function TopBar({ showNav, setShowNav }) {
           .logo {
             width: 20vw;
           }
+          
+          .logo-container {
+            margin-top: 10px; /* Reduz a margem superior */
+          }
         }
       `}</style>
     </div>
