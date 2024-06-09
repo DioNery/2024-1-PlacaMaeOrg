@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from '../styles/quiz.module.css'; 
 import getQuestoes from '../pages/questoes';
 const QuizContainer = lazy(() => import('./quizContainer'));
+const Certificado = lazy(() => import('./certificado'));
 const Falha = lazy(() => import('../pages/falha'));
 const Quiz = () => {
   const router = useRouter();
@@ -42,11 +43,12 @@ const Quiz = () => {
 
   const handleConfirm = () => {
     setIsConfirmed(true);
-    setIsCorrect(selectedOption === currentQuestion.correctAnswerIndex);
-    if (isCorrect) {
+    // Verifica o valor atualizado de selectedOption
+    const isAnswerCorrect = selectedOption === currentQuestion.correctAnswerIndex;
+    setIsCorrect(isAnswerCorrect);
+    if (isAnswerCorrect) {
       setCorrectAnswersCount((prevCount) => prevCount + 1); // Incrementa o contador de respostas corretas
     }
-   
   };
 
   const handleTryAgain = () => {
@@ -71,7 +73,7 @@ const Quiz = () => {
       if (correctAnswersCount > currentQuestions.length / 2) {
         router.push('/certificado');
       } else {
-       <Falha/>
+        router.push('/falha');
       }
     }
   };
