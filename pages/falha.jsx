@@ -5,7 +5,7 @@ const Falha = () => {
   const router = useRouter();
 
   const handleSelecionarClick = () => {
-    router.push('/quiz');
+    router.push('/');
   };
 
   return (
