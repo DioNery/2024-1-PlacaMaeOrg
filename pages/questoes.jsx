@@ -1,5 +1,6 @@
-const questoesF = [
-  {
+const questoes = {
+  facil: [
+    {
     question: 'O que é cyberbullying?',
     options: [
       'É manipular psicologicamente pessoas para executar ações na Internet.',
@@ -129,8 +130,8 @@ const questoesF = [
     ],
     correctAnswerIndex: 2,
   },
-];
-const questoesM = [
+],
+medio: [
   {
     question: 'O que é a Linguagem Valorativa e como ela se manifesta na comunicação familiar?',
     options: [
@@ -301,9 +302,9 @@ const questoesM = [
     ],
     correctAnswerIndex: 0,
   },
-];
+],
 
-const questoesD = [
+dificil: [
   {
     question: 'Qual era o objetivo principal do projeto SafeWeb?',
     options: [
@@ -434,19 +435,15 @@ const questoesD = [
     ],
     correctAnswerIndex: 0,
   },
-];
-
+]
+}
 const getQuestoes = (dificuldade) => {
-  switch (dificuldade) {
-    case 'facil':
-      return questoesF;
-    case 'medio':
-      return questoesM;
-    case 'dificil':
-      return questoesD;
-    default:
-      throw new Error('Dificuldade não reconhecida');
+  const questoesPorDificuldade = questoes[dificuldade];
+  if (!questoesPorDificuldade) {
+    throw new Error('Dificuldade não reconhecida');
   }
+  return questoesPorDificuldade;
 };
+
 
 export default getQuestoes;

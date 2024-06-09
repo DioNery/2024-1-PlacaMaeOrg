@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import styles from '../styles/quiz.module.css';
-import Certificado from '../pages/certificado'; // Certifique-se de que este caminho está correto
-import getQuestoes from '../pages/questoes'; // Certifique-se de que este caminho está correto
-
+import styles from '../styles/quiz.module.css'; 
+import getQuestoes from '../pages/questoes';
+const QuizContainer = lazy(() => import('./quizContainer'));
+const Falha = lazy(() => import('../pages/falha'));
 const Quiz = () => {
   const router = useRouter();
   const [selectedOption, setSelectedOption] = useState(null);
@@ -13,7 +13,7 @@ const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestions, setCurrentQuestions] = useState([]);
   const [step, setStep] = useState('start');
-
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   useEffect(() => {
     const { dificuldade } = router.query;
 
@@ -43,6 +43,10 @@ const Quiz = () => {
   const handleConfirm = () => {
     setIsConfirmed(true);
     setIsCorrect(selectedOption === currentQuestion.correctAnswerIndex);
+    if (isCorrect) {
+      setCorrectAnswersCount((prevCount) => prevCount + 1); // Incrementa o contador de respostas corretas
+    }
+   
   };
 
   const handleTryAgain = () => {
@@ -51,7 +55,12 @@ const Quiz = () => {
     setIsConfirmed(false);
     setCurrentQuestionIndex(0);
   };
-
+  const handleTryCurrentQuestion = () => {
+    setSelectedOption(null);
+    setIsCorrect(null);
+    setIsConfirmed(false);
+  };
+  
   const handleNextQuestion = () => {
     setSelectedOption(null);
     setIsCorrect(null);
@@ -59,7 +68,11 @@ const Quiz = () => {
     if (currentQuestionIndex < currentQuestions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
-      router.push('/certificado'); // Ajuste a navegação conforme necessário
+      if (correctAnswersCount > currentQuestions.length / 2) {
+        router.push('/certificado');
+      } else {
+       <Falha/>
+      }
     }
   };
 
@@ -92,17 +105,17 @@ const Quiz = () => {
         </div>
         <div className={"flex items-center"}>
           <div className='Estante'>
-            <img src='/block.png' className={styles.imagem} width="170px"></img>
+            <img src='/block.png' className={styles.imagem} width="170px" alt="Block" />
           </div>
           <div className={'flex flex-col items-center'}>
             <button className={styles.dificil} onClick={() => handleQuizStart('dificil')}>
-              <img src='/dificil.png'></img>
+              <img src='/dificil.png' alt="Difícil" />
             </button>
             <button className={styles.medio} onClick={() => handleQuizStart('medio')}>
-              <img src='/medio.png'></img>
+              <img src='/medio.png' alt="Médio" />
             </button>
             <button className={styles.facil} onClick={() => handleQuizStart('facil')}>
-              <img src='/facil.png'></img>
+              <img src='/facil.png' alt="Fácil" />
             </button>
           </div>
         </div>
@@ -116,45 +129,20 @@ const Quiz = () => {
 
   return (
     <>
-      <div className={styles.quizContainer}>
-        <div style={{ color: 'white', fontSize: '1.2rem' }} className={styles.questionCounter}>
-          Questão {currentQuestionIndex + 1} de {currentQuestions.length}
-        </div>
-        <h1 className={`${styles.pergunta} text-lg md:text-xl lg:text-2xl`}>{currentQuestion.question}</h1>
-        <div className={styles.optionsContainer}>
-          {currentQuestion.options.map((option, index) => (
-            <div
-              key={index}
-              className={`${styles.option} ${
-                selectedOption === index ? styles.selected : ''
-              } ${isConfirmed && index === currentQuestion.correctAnswerIndex ? styles.correct : ''} ${
-                isConfirmed && index === selectedOption && !isCorrect ? styles.incorrect : ''
-              }`}
-              onClick={() => handleOptionClick(index)}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-        {isConfirmed ? (
-          <button className={`${styles.confirmButton} text-sm md:text-base lg:text-lg`} onClick={isCorrect ? handleNextQuestion : handleTryAgain}>
-            {isCorrect ? 'Próxima Pergunta' : 'Tentar Novamente'}
-          </button>
-        ) : (
-          <button
-            className={`${styles.confirmButton} text-sm md:text-base lg:text-lg`}
-            onClick={handleConfirm}
-            disabled={isConfirmed}
-          >
-            Confirmar
-          </button>
-        )}
-      </div>
+      <QuizContainer
+  currentQuestion={currentQuestion}
+  currentQuestionIndex={currentQuestionIndex}
+  currentQuestions={currentQuestions}
+  selectedOption={selectedOption}
+  handleOptionClick={handleOptionClick}
+  isConfirmed={isConfirmed}
+  handleConfirm={handleConfirm}
+  isCorrect={isCorrect}
+  handleNextQuestion={handleNextQuestion}
+  handleTryAgain={handleTryAgain}
+  handleTryCurrentQuestion={handleTryCurrentQuestion} // Certifique-se de adicionar essa linha
+/>
 
-      {/* Preloading components */}
-      <div style={{ display: 'none' }}>
-        <Certificado />
-      </div>
     </>
   );  
 }; 
