@@ -23,28 +23,36 @@ const QuizContainer = ({ currentQuestion, currentQuestionIndex, currentQuestions
 
   return (
     <div className={styles.quizContainer}>
-      <div className={`${styles.questionCounter} text-white text-lg`} style={{ fontSize: '1.2rem' }}>
-        Questão {currentQuestionIndex + 1} de {currentQuestions.length}
+      <div className={`${styles.questionCounter} text-white text-sm`} style={{ fontSize: window.innerWidth > 768 ? '0.8rem' : '0.6rem' }}>
+  Questão {currentQuestionIndex + 1} de {currentQuestions.length}
+</div>
+<h6 style={{ fontSize: window.innerWidth > 768 ? '0.8rem' : '0.6rem', color: 'white' }}>
+  {currentQuestion.question}
+</h6>
+<div className={styles.optionsContainer}>
+  {currentQuestion.options.map((option, index) => {
+    const isSelected = selectedOption === index;
+    const isCorrectAnswer = isConfirmed && index === currentQuestion.correctAnswerIndex;
+    const isIncorrectAnswer = isConfirmed && index === selectedOption && !isCorrect;
+    
+    const optionStyles = {
+      fontSize: window.innerWidth > 768 ? '1rem' : '0.6rem', // Ajuste o tamanho da fonte com base na largura da janela
+      padding: window.innerWidth > 768 ? '0.5rem 1rem' : '0.3rem 0.8rem', // Ajuste o preenchimento com base na largura da janela
+    };
+
+    return (
+      <div
+        key={index}
+        className={`${styles.option} ${isSelected ? styles.selected : ''} ${isCorrectAnswer ? styles.correct : ''} ${isIncorrectAnswer ? styles.incorrect : ''}`}
+        style={optionStyles}
+        onClick={() => handleOptionClick(index)}
+      >
+        {option}
       </div>
-      <h1 className={`${styles.pergunta} text-lg md:text-xl lg:text-2xl`}>
-        {currentQuestion.question}
-      </h1>
-      <div className={styles.optionsContainer}>
-        {currentQuestion.options.map((option, index) => {
-          const isSelected = selectedOption === index;
-          const isCorrectAnswer = isConfirmed && index === currentQuestion.correctAnswerIndex;
-          const isIncorrectAnswer = isConfirmed && index === selectedOption && !isCorrect;
-          return (
-            <div
-              key={index}
-              className={`${styles.option} ${isSelected ? styles.selected : ''} ${isCorrectAnswer ? styles.correct : ''} ${isIncorrectAnswer ? styles.incorrect : ''}`}
-              onClick={() => handleOptionClick(index)}
-            >
-              {option}
-            </div>
-          );
-        })}
-      </div>
+    );
+  })}
+</div>
+
       {isConfirmed ? (
   <>
     {isCorrect ? (
@@ -54,24 +62,25 @@ const QuizContainer = ({ currentQuestion, currentQuestionIndex, currentQuestions
     ) : (
       <>
         {retryAvailable && (
-          <button className={`${styles.confirmButton} mr-20 text-sm md:text-base lg:text-lg`} onClick={handleRetryQuestion}>
+          <button className={`${styles.confirmButton} ${window.innerWidth > 768 ? 'mr-20' : 'mr-10'} text-sm md:text-base lg:text-lg`} onClick={handleRetryQuestion}>
             Tentar Novamente
           </button>
         )}
-        <button className={`${styles.confirmButton} mr-20 text-sm md:text-base lg:text-lg`} onClick={handleAdvanceQuestion}>
+        <button className={`${styles.confirmButton} ${window.innerWidth > 768 ? 'mr-20' : 'mr-10'} text-sm md:text-base lg:text-lg`} onClick={handleAdvanceQuestion}>
           Avançar
         </button>
-        <button className={`${styles.confirmButton} mt-20 text-sm md:text-base lg:text-lg`} onClick={handleTryCurrentQuestion}>
+        <button className={`${styles.confirmButton} ${window.innerWidth > 768 ? 'mt-20' : 'mt-10'} text-sm md:text-base lg:text-lg`} onClick={handleTryCurrentQuestion}>
           Tentar esta Questão Novamente
         </button>
       </>
     )}
   </>
 ) : (
-  <button className={`${styles.confirmButton} mt-20 text-sm md:text-base lg:text-lg`} onClick={handleConfirm} disabled={isConfirmed}>
+  <button className={`${styles.confirmButton} ${window.innerWidth > 768 ? 'mt-20' : 'mt-10'} text-sm md:text-base lg:text-lg`} onClick={handleConfirm} disabled={isConfirmed}>
     Confirmar
   </button>
 )}
+
 
     </div>
   );
