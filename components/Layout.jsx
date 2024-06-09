@@ -53,11 +53,13 @@ export default function Layout({ children }) {
       {modal1Open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
           {/* Modal 1 */}
+          <img className="modal-image" src="/modal1_image.png" alt="Modal 1" loading="lazy" />
         </div>
       )}
       {modal2Open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
           {/* Modal 2 */}
+          <img className="modal-image" src="/modal2_image.png" alt="Modal 2" loading="lazy" />
         </div>
       )}
     </>

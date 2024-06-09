@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import styles from '../../styles/pagSecundarias.module.css';
 
-export default function Livros() {
+const Livros = () => {
   const livros = [
     { 
       src: '/livro1.png',
@@ -52,6 +53,13 @@ export default function Livros() {
       className: styles.selecionar
     },
   ];
+  const [loadedImages, setLoadedImages] = useState([]);
+
+  // Função para lidar com o carregamento de imagens
+  const handleImageLoad = (index) => {
+    // Adicione o índice da imagem ao array de imagens carregadas
+    setLoadedImages((prevLoadedImages) => [...prevLoadedImages, index]);
+  };
 
   return (
     <div>
@@ -59,24 +67,43 @@ export default function Livros() {
       <div className={styles.texto2}>
         <p>Livros gratuitos e autorias do placamae:</p>
         <div className={styles.horizontalAlign}>
-        {livros.slice(0, 3).map((livro, index) => (
-          <a key={index} href={livro.href} target="_blank" rel="noopener noreferrer">
-            <img src={livro.src} alt={livro.alt} className={`${styles.componente1} ${livro.className}`} />
-          </a>
-        ))}
-      </div>
+          {livros.slice(0, 3).map((livro, index) => (
+            <a key={index} href={livro.href} target="_blank" rel="noopener noreferrer">
+              <div className={styles.componente1}>
+                <Image
+                  src={livro.src}
+                  alt={livro.alt}
+                  width={100}
+                  height={100}
+                  onLoad={() => handleImageLoad(index)} // Chame a função handleImageLoad no evento onLoad da imagem
+                  className={loadedImages.includes(index) ? styles.loaded : styles.loading} // Use a classe styles.loaded se a imagem estiver carregada, senão use styles.loading
+                />
+              </div>
+            </a>
+          ))}
+        </div>
         <p>Recomendação de compras:</p>
         <div className={styles.horizontalAlign}>
-        {livros.slice(3).map((livro, index) => (
-          <a key={index} href={livro.href} target="_blank" rel="noopener noreferrer">
-            <img src={livro.src} alt={livro.alt} className={`${styles.componente1} ${livro.className}`} />
-          </a>
-        ))}
+          {livros.slice(3).map((livro, index) => (
+            <a key={index} href={livro.href} target="_blank" rel="noopener noreferrer">
+              <div className={styles.componente1}>
+                <Image
+                  src={livro.src}
+                  alt={livro.alt}
+                  width={100}
+                  height={100}
+                  onLoad={() => handleImageLoad(index + 3)} // O índice para o segundo conjunto de livros começa em 3
+                  className={loadedImages.includes(index + 3) ? styles.loaded : styles.loading} // Use a classe styles.loaded se a imagem estiver carregada, senão use styles.loading
+                />
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
-      </div>
-     
-     
       <a href='/pagIndicacoes/indicacoes' className={styles.link}>Voltar</a>
     </div>
   );
-}
+};
+
+export default Livros;
+

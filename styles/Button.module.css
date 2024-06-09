@@ -52,9 +52,9 @@
 .principal {
   display: grid;
   /* position: relative; */
-  top: -120px;
+  top: 200px;
   left: 2%;
-  width: 900px;
+  width: 700px;
 }
 
 .texto {

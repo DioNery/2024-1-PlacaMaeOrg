@@ -22,7 +22,7 @@ export default function TopBar({ showNav, setShowNav }) {
         />
       </div>
       <div className="logo-container">
-        <img className="logo" src="/logo_home.png" alt="logo X" />
+        <img className="logo" src="/logo_home.png" alt="logo X" loading="lazy" />
       </div>
 
       <style jsx>{`

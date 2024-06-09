@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'; // Importando a função dynamic
 import styles from '../../styles/pagSecundarias.module.css';
 
 // Importando o componente Carousel de forma assíncrona
-const Carousel = dynamic(() => import('../../components/Carousel'));
+const Carousel = dynamic(() => import('../../components/Carousel'), { ssr: false });
 
 export default function Saibamais() {
   return (
@@ -28,6 +28,11 @@ export default function Saibamais() {
         </div>
       </div>
       <Carousel />
+
+      {/* Preloading component */}
+      <div style={{ display: 'none' }}>
+        <Carousel />
+      </div>
     </>
   );
 }

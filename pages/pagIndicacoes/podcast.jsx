@@ -5,23 +5,20 @@ import { pods } from './podcastData';
 export default function PodCast() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const handleMouseEnter = useCallback((index) => {
+  const handleMouseEnter = (index) => {
     setHoveredIndex(index);
-  }, []);
+  };
 
-  const handleMouseLeave = useCallback(() => {
+  const handleMouseLeave = () => {
     setHoveredIndex(null);
-  }, []);
+  };
 
-  const getPodStyle = useCallback(
-    (index) => ({
-      transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)',
-      transition: 'transform 0.3s ease, filter 0.3s ease',
-      filter: hoveredIndex !== null && hoveredIndex !== index ? 'blur(2px)' : 'none',
-      zIndex: hoveredIndex === index ? 10 : 0, // Definindo zIndex maior quando hover
-    }),
-    [hoveredIndex]
-  );
+  const getPodStyle = (index) => ({
+    transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)',
+    transition: 'transform 0.3s ease, filter 0.3s ease',
+    filter: hoveredIndex !== null && hoveredIndex !== index ? 'blur(2px)' : 'none',
+    zIndex: hoveredIndex === index ? 10 : 0,
+  });
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -45,6 +42,7 @@ export default function PodCast() {
                 style={getPodStyle(index)}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
+                loading="eager" // This line ensures images are loaded eagerly
               />
             </div>
           </a>

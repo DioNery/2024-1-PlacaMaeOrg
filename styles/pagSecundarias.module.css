@@ -55,9 +55,8 @@
   text-align: center;
   padding: 20px;
 }
-
 .horizontalAlign {
-  display: fixed;
+  display: flex;
   justify-content: center;
   gap: 20px;
   margin: 2%;

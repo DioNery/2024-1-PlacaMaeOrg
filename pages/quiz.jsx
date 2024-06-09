@@ -1,10 +1,9 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from '../styles/quiz.module.css';
-
-// Lazy load da função getQuestoes
-const getQuestoes = import('../pages/questoes').then((module) => module.default);
+import Certificado from '../pages/certificado'; // Certifique-se de que este caminho está correto
+import getQuestoes from '../pages/questoes'; // Certifique-se de que este caminho está correto
 
 const Quiz = () => {
   const router = useRouter();
@@ -17,11 +16,10 @@ const Quiz = () => {
 
   useEffect(() => {
     const { dificuldade } = router.query;
-    
+
     const loadQuestions = async () => {
       try {
-        const questionsModule = await getQuestoes;
-        const questions = questionsModule(dificuldade);
+        const questions = getQuestoes(dificuldade);
         setCurrentQuestions(questions || []);
         setCurrentQuestionIndex(0);
       } catch (error) {
@@ -60,13 +58,16 @@ const Quiz = () => {
     setIsConfirmed(false);
     if (currentQuestionIndex < currentQuestions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    } else if (isCorrect) {
-      router.push('/tela-de-destino');
+    } else {
+      router.push('/certificado'); // Ajuste a navegação conforme necessário
     }
   };
 
   const handleQuizStart = (dificuldade) => {
-    router.push(`/quiz?dificuldade=${dificuldade}`);
+    router.push({
+      pathname: '/quiz',
+      query: { dificuldade }
+    });
   };
 
   if (step === 'start') {
@@ -81,33 +82,31 @@ const Quiz = () => {
         </button>
       </div>
     );
-       
   }
 
   if (step === 'select') {
     return (
       <div>
-      <div>
-              <h1 className={styles.titulo}>Selecione a dificuldade: </h1>
-          </div>
-    <div className= {"flex items-center"}>
-          
-            <div className='Estante'>
-            <img src='/block.png' className={styles.imagem} width="170px"></img>
-            </div>
-            <div className={'flex flex-col items-center'}>
-              <button className={styles.dificil} onClick={() => handleQuizStart('dificil')}>
-                <img src='/dificil.png'></img>
-              </button>
-              <button className={styles.medio} onClick={() => handleQuizStart('medio')}>
-                <img src='/medio.png'></img>
-              </button>
-              <button className={styles.facil} onClick={() => handleQuizStart('facil')}>
-                <img src='/facil.png'></img>
-              </button>
-              </div>
+        <div>
+          <h1 className={styles.titulo}>Selecione a dificuldade: </h1>
         </div>
-    </div>
+        <div className={"flex items-center"}>
+          <div className='Estante'>
+            <img src='/block.png' className={styles.imagem} width="170px"></img>
+          </div>
+          <div className={'flex flex-col items-center'}>
+            <button className={styles.dificil} onClick={() => handleQuizStart('dificil')}>
+              <img src='/dificil.png'></img>
+            </button>
+            <button className={styles.medio} onClick={() => handleQuizStart('medio')}>
+              <img src='/medio.png'></img>
+            </button>
+            <button className={styles.facil} onClick={() => handleQuizStart('facil')}>
+              <img src='/facil.png'></img>
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -116,41 +115,47 @@ const Quiz = () => {
   }
 
   return (
-    <div className={styles.quizContainer}>
-      <div style={{ color: 'white', fontSize: '1.2rem' }} className={styles.questionCounter}>
-        Questão {currentQuestionIndex + 1} de {currentQuestions.length}
-      </div>
-      <h1 className={`${styles.pergunta} text-lg md:text-xl lg:text-2xl`}>{currentQuestion.question}</h1>
-      <div className={styles.optionsContainer}>
-        {currentQuestion.options.map((option, index) => (
-          <div
-            key={index}
-            className={`${styles.option} ${
-              selectedOption === index ? styles.selected : ''
-            } ${isConfirmed && index === currentQuestion.correctAnswerIndex ? styles.correct : ''} ${
-              isConfirmed && index === selectedOption && !isCorrect ? styles.incorrect : ''
-            }`}
-            onClick={() => handleOptionClick(index)}
+    <>
+      <div className={styles.quizContainer}>
+        <div style={{ color: 'white', fontSize: '1.2rem' }} className={styles.questionCounter}>
+          Questão {currentQuestionIndex + 1} de {currentQuestions.length}
+        </div>
+        <h1 className={`${styles.pergunta} text-lg md:text-xl lg:text-2xl`}>{currentQuestion.question}</h1>
+        <div className={styles.optionsContainer}>
+          {currentQuestion.options.map((option, index) => (
+            <div
+              key={index}
+              className={`${styles.option} ${
+                selectedOption === index ? styles.selected : ''
+              } ${isConfirmed && index === currentQuestion.correctAnswerIndex ? styles.correct : ''} ${
+                isConfirmed && index === selectedOption && !isCorrect ? styles.incorrect : ''
+              }`}
+              onClick={() => handleOptionClick(index)}
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+        {isConfirmed ? (
+          <button className={`${styles.confirmButton} text-sm md:text-base lg:text-lg`} onClick={isCorrect ? handleNextQuestion : handleTryAgain}>
+            {isCorrect ? 'Próxima Pergunta' : 'Tentar Novamente'}
+          </button>
+        ) : (
+          <button
+            className={`${styles.confirmButton} text-sm md:text-base lg:text-lg`}
+            onClick={handleConfirm}
+            disabled={isConfirmed}
           >
-            {option}
-          </div>
-        ))}
+            Confirmar
+          </button>
+        )}
       </div>
-      {isConfirmed ? (
-        <button className={`${styles.confirmButton} text-sm md:text-base lg:text-lg`} onClick={isCorrect ? handleNextQuestion : handleTryAgain}>
-          {isCorrect ? 'Próxima Pergunta' : 'Tentar Novamente'}
-        </button>
-      ) : (
-        <button
-          className={`${styles.confirmButton} text-sm md:text-base lg:text-lg`}
-          onClick={handleConfirm}
-          disabled={isConfirmed}
-        >
-          Confirmar
-        </button>
-      )}
-    </div>
-  );  
-};
 
+      {/* Preloading components */}
+      <div style={{ display: 'none' }}>
+        <Certificado />
+      </div>
+    </>
+  );  
+}; 
 export default Quiz;

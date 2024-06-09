@@ -1,6 +1,12 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic'; // Importando a função dynamic
 import styles from '../../styles/recommended.module.css';
+
+// Importando componentes de forma assíncrona
+const Podcast = dynamic(() => import('./podcast'));
+const Livros = dynamic(() => import('./livros'));
+const Artigos = dynamic(() => import('./artigo'));
 
 export default function Indicacoes() {
   const router = useRouter();
@@ -28,6 +34,13 @@ export default function Indicacoes() {
             <p className={styles.buttonTitle}>{button.title}</p>
           </div>
         ))}
+      </div>
+
+      {/* Preloading components */}
+      <div style={{ display: 'none' }}>
+        <Podcast />
+        <Livros />
+        <Artigos />
       </div>
 
       <style jsx>{`
