@@ -14,4 +14,13 @@ module.exports = {
     ];
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/selecionar-dificuldade',
+        destination: '/quiz/selecionar-dificuldade',
+        permanent: true,
+      },
+    ]
+  },
 };
