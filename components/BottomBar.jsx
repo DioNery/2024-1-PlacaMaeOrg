@@ -18,7 +18,7 @@ export default function BottomBar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/Facebook.png" alt="Facebook" className="h-6 w-6 md:h-8 md:w-8 mr-2 md:mr-4" />
+            <img src="/facebook.png" alt="Facebook" className="h-6 w-6 md:h-8 md:w-8 mr-2 md:mr-4" />
           </a>
           <a
             href="https://instagram.com/placamae.org_?igshid=NzZlODBkYWE4Ng=="
