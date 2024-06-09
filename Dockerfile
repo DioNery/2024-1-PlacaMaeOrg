@@ -2,7 +2,7 @@
 FROM node:18.16.0-alpine
 
 # Instala dependências nativas necessárias
-RUN apk add --no-cache python3 make g++
+RUN apk add --no-cache python3 make g++ autoconf automake libtool
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
