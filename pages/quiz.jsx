@@ -71,7 +71,10 @@ const Quiz = () => {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
       if (correctAnswersCount > currentQuestions.length / 2) {
-        router.push('/certificado');
+        router.push({
+          pathname: '/certificado',
+          query: { dificuldade: router.query.dificuldade }
+        });
       } else {
         router.push('/falha');
       }

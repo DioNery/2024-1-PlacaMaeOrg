@@ -7,9 +7,24 @@ import Home from '../pages/index';
 
 const Certificado = () => {
   const router = useRouter();
+  const { dificuldade } = router.query;
 
   const handleVoltarClick = () => {
-    router.push('/quiz');
+    router.push('/');
+  };
+
+  // Defina a imagem do certificado com base na dificuldade
+  const getImageSrc = (dificuldade) => {
+    switch (dificuldade) {
+      case 'facil':
+        return '/certificadoF.jpeg';
+      case 'medio':
+        return '/certificadoM.jpeg';
+      case 'dificil':
+        return '/certificadoD.jpeg';
+      default:
+        return '/certificadoF.jpeg';
+    }
   };
 
   return (
@@ -26,7 +41,7 @@ const Certificado = () => {
         </h1>
         <div className={styles.certificadoImage}>
           <Image 
-            src="/certificado.png" 
+            src={getImageSrc(dificuldade)} 
             alt="Certificado"
             width={500}
             height={350}
