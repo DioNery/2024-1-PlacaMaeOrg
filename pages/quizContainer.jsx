@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/quiz.module.css';
-
+import classNames from 'classnames';
 const QuizContainer = ({ currentQuestion, currentQuestionIndex, currentQuestions, selectedOption, handleOptionClick, isConfirmed, handleConfirm, isCorrect, handleNextQuestion, handleTryAgain, handleTryCurrentQuestion }) => {
     const [retryAvailable, setRetryAvailable] = useState(true);
-
+    const isMobile = window.innerWidth <= 768;
   useEffect(() => {
     if (isConfirmed) {
       setRetryAvailable(true);
@@ -23,12 +23,12 @@ const QuizContainer = ({ currentQuestion, currentQuestionIndex, currentQuestions
 
   return (
     <div className={styles.quizContainer}>
-      <div className={`${styles.questionCounter} text-white text-sm`} style={{ fontSize: window.innerWidth > 768 ? '0.8rem' : '0.6rem' }}>
-  Questão {currentQuestionIndex + 1} de {currentQuestions.length}
-</div>
-<h6 style={{ fontSize: window.innerWidth > 768 ? '0.8rem' : '0.6rem', color: 'white' }}>
-  {currentQuestion.question}
-</h6>
+      <div className={`${styles.questionCounter} text-white text-sm`} style={{ fontSize: isMobile ? '0.5rem' : '1.0rem' }}>
+    Questão {currentQuestionIndex + 1} de {currentQuestions.length}
+  </div>
+  <h4 style={{ fontSize: isMobile ? '0.6rem' : '1.0rem', color: 'white' }}>
+    {currentQuestion.question}
+  </h4>
 <div className={styles.optionsContainer}>
   {currentQuestion.options.map((option, index) => {
     const isSelected = selectedOption === index;
