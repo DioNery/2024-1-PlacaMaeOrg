@@ -121,14 +121,14 @@ const questoes = {
     correctAnswerIndex: 1,
   },
   {
-    question: 'CASO 05: Beatriz e Nilson eram namorados há muitos anos e tinham uma relação de muita confiança. Acontece que, com o intercâmbio de Beatriz para o Canadá, Nilson começou a brigar constantemente por ciúmes, a relação se desgastou e resolveram terminar. Pouco tempo depois, Beatriz posta foto com um novo namorado também intercambista. Furioso com a postagem, Nilson resolve praticar cyberbullying nos comentários. Em qual dessas situações você visualiza cyberbullying?',
+    question: 'Como a escola pode atuar na prevenção do bullying e cyberbullying?',
     options: [
-      'Comentar desaprovando o namoro e desejando infelicidade aos dois.',
-      'Publicar foto da época do namoro deles e dizer que eram muito melhores.',
-      'Compartilhar fotos íntimas do dois e proferir ameaças a ex namorada.',
-      'Comentar tamanho desapontamento com início tão rápido de outro relacionamento.',
+      'A) Implementando programas de conscientização e apoio psicológico.',
+      'B) Ignorando as situações para não envolver os professores e alunos.',
+      'C) Encorajando os alunos a resolverem seus próprios conflitos sem intervenção.',
+      'D) Proibindo o uso de qualquer tecnologia no ambiente escolar.',
     ],
-    correctAnswerIndex: 2,
+    correctAnswerIndex: 0,
   },
 ],
 medio: [
@@ -261,46 +261,6 @@ medio: [
       'D) Ganho de autoconfiança.',
     ],
     correctAnswerIndex: 2,
-  },
-  {
-    question: 'Qual é a melhor forma de lidar com conteúdos ofensivos na internet, segundo o texto?',
-    options: [
-      'A) Compartilhar o conteúdo com amigos para alertá-los.',
-      'B) Ignorar completamente e não tomar nenhuma ação.',
-      'C) Utilizar filtros técnicos das plataformas e denunciar os conteúdos de violência.',
-      'D) Responder às ofensas com agressões verbais.',
-    ],
-    correctAnswerIndex: 2,
-  },
-  {
-    question: 'A partir de qual idade adolescentes respondem à justiça pelo ato infracional equivalente ao crime de cyberbullying?',
-    options: [
-      'A) 10 anos.',
-      'B) 12 anos.',
-      'C) 14 anos.',
-      'D) 16 anos.',
-    ],
-    correctAnswerIndex: 1,
-  },
-  {
-    question: 'Quais são os sinais de que uma criança ou adolescente pode estar sofrendo bullying?',
-    options: [
-      'A) Melhoras na autoestima e comportamento.',
-      'B) Evitar a escola ou eventos sociais, mudanças de humor e sono, quedas no desempenho escolar.',
-      'C) Aumento repentino de amizades e popularidade.',
-      'D) Interesse crescente por atividades esportivas e acadêmicas.',
-    ],
-    correctAnswerIndex: 1,
-  },
-  {
-    question: 'Como a escola pode atuar na prevenção do bullying e cyberbullying?',
-    options: [
-      'A) Implementando programas de conscientização e apoio psicológico.',
-      'B) Ignorando as situações para não envolver os professores e alunos.',
-      'C) Encorajando os alunos a resolverem seus próprios conflitos sem intervenção.',
-      'D) Proibindo o uso de qualquer tecnologia no ambiente escolar.',
-    ],
-    correctAnswerIndex: 0,
   },
 ],
 
