@@ -32,7 +32,7 @@ export default function Home() {
             <p className={styles.botao}>Materiais de Estudo</p>
           </Link>
           <Link href="/quiz">
-            <p className={styles.botao}>Quiz</p>
+            <p className={styles.botao}>O BullyQuiz</p>
           </Link>
         </div>
       </div>
