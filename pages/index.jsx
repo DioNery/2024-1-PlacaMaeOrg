@@ -10,10 +10,10 @@ export default function Home() {
       <div className="main-container">
         <div className="image-container">
           <div className="image-wrapper">
-          <p className="text-white text-2xl font-extrabold italic w-550 relative" style={{ left: "120%", top: "0" }}>
+          <p className="text-white text-2xl font-extrabold italic w-550 relative" style={{top: "0" }}>
           Bem-vindos ao EducaBullying:
             </p>
-            <p className="text-white text-xl font-bold italic w-150 relative" style={{ left: "120%", top: "0" }}>
+            <p className="text-white text-xl font-bold italic w-150 relative" style={{top: "0" }}>
               A educação digital pode ser divertida e transformadora_
             </p>
             <Image
