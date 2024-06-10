@@ -10,7 +10,7 @@ const Falha = () => {
 
   return (
     <div>
-      <h1 className={styles.certificadoContainer}>
+      <h1 className={styles.conclusao}>
         Infelizmente você não conseguiu atingir o resultado esperado!
       </h1>
       <div style={{ fontSize: '1.2rem', textAlign: 'center', margin: '20px 0' }}>
