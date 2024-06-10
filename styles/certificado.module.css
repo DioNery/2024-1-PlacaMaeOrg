@@ -1,70 +1,46 @@
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .certificadoContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.certificadoImage {
-  margin-top: 5px;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.certificadoImage img {
-  width: 90%; /* Altera a largura para ocupar 90% do contêiner pai */
-  height: auto;
-  max-width: 105vh; /* Define a largura máxima em viewport units */
-  border-radius: 2vh;
-}
-
-.voltarButton {
-  margin-top: 8px;
-  padding: 10px 20px;
-  background-color: rgba(251, 108, 27, 1);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  animation: fadeInUp 0.8s ease-out; /* Adicionando transição para suavizar a mudança de cor */
-}
-
-.voltarButton:hover {
-  background-color: rgb(164, 69, 14);
-  opacity: 0.8;
-  transform: scale(1.1);
+  padding: 20px;
+  text-align: center;
 }
 
 .conclusao {
-  margin-top: 0 auto;
+  font-size: 2rem; /* Tamanho original */
+  font-weight: bold;
+  font-style: italic;
   color: white;
-  font-size: larger;
-  font-weight: bolder;
-  animation: fadeInUp 0.8s ease-out;
+  margin-bottom: 20px;
 }
 
-/* Adiciona regras de mídia para dispositivos móveis */
+.certificadoImage {
+  margin-bottom: 20px;
+}
+
+.voltarButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.voltarButton:hover {
+  background-color: #005bb5;
+}
+
+.imagem {
+  max-width: 100%;
+  height: auto;
+}
+
 @media (max-width: 768px) {
-  .certificadoImage img {
-    width: 90%; /* Altera a largura para ocupar 90% do contêiner pai */
-    max-width: none; /* Remove a largura máxima */
+  .conclusao {
+    font-size: 1.2rem; /* Tamanho reduzido para telas menores */
   }
 
   .voltarButton {
-    font-size: 14px; /* Reduz o tamanho da fonte para dispositivos móveis */
-    padding: 8px 16px; /* Reduz o preenchimento */
+    font-size: 0.9rem;
+    padding: 8px 16px;
   }
 }

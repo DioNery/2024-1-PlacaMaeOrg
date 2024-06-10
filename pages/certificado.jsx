@@ -13,7 +13,6 @@ const Certificado = () => {
     router.push('/');
   };
 
-  // Defina a imagem do certificado com base na dificuldade
   const getImageSrc = (dificuldade) => {
     switch (dificuldade) {
       case 'facil':
@@ -54,7 +53,6 @@ const Certificado = () => {
         </button>
       </div>
 
-      {/* Preloading components */}
       <div style={{ display: 'none' }}>
         <Quiz />
         <Home />
